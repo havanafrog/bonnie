@@ -2,8 +2,15 @@
 title: "survivals in R"
 subtitle: ""
 author: ""
-output: rmarkdown::github_document
+output: 
+  rmarkdown::github_document :
+    toc : true
+    toc_depth : 3
+    
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = "center", message=F, warning=F, fig.height = 14, cache=T)
+```
 
 ```{r}
 library(survival)
@@ -12,6 +19,7 @@ library(survminer)
 library(readr)
 ```
 
+### 0. structure
 ```{r}
 a<- read.csv("dat3.csv")
 a$Initial_tx <- as.factor(a$Initial_tx)
@@ -25,19 +33,24 @@ a$Subphrenic <- as.factor(a$Subphrenic)
 a <- a[,-17] ## 값이 0 밖에 존재하지 않아여 지우기
 ```
 
+- 17번 periivc 의 변수는 0밖에 존재하지 않기에 제거한다.
+
 ```{r}
 test <- a
 test <- na.omit(test)
-
-
-survi <- Surv(time = test$os_time, event = test$death)
-fit1 <- survfit(survi~test$Initial_tx,data=test)
-
 ```
 
-## Quarterly Results {.tabset .tabset-fade .tabset-pills}
+### 1. package(Survival)
+```{r}
+survi <- Surv(time = test$os_time, event = test$death)
+fit1 <- survfit(survi~test$Initial_tx,data=test)
+```
 
-### blank
++ 1. 변수명 os_time을 시간으로, death를 event로 지정한다.
++ 2. survfit 함수를 사용하여 
+
+###. 
+
 1. ggsurvplot을 사용 
 
 ```{r}
@@ -75,5 +88,11 @@ cox_f<-function(x){
   result <- coxph(survi~test[,x],data=test)
   print(result)
 }
+```
+
+
+
+```{r}
 
 ```
+
