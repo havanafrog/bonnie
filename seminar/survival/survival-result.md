@@ -60,6 +60,8 @@ fit1
 ### some thing2
 
 ``` r
+par(mfrow = c(4,5))
+
  ggsurvplot(survfit(survi~test[,1]),data=test,pval=T)
 ```
 
