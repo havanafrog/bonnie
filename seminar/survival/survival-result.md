@@ -1,7 +1,7 @@
 survivals in R
 ================
 
-  - [0. 각각의 structure를 고려하기.](#0-각각의-structure를-고려하기)
+  - [0. structure](#0-structure)
   - [1. package(Survival)](#1-packagesurvival)
   - [some thing2](#some-thing2)
 
@@ -12,7 +12,7 @@ library(survminer)
 library(readr)
 ```
 
-### 0\. 각각의 structure를 고려하기.
+### 0\. structure
 
 ``` r
 a<- read.csv("dat3.csv")
@@ -41,11 +41,17 @@ test <- na.omit(test)
 ``` r
 survi <- Surv(time = test$os_time, event = test$death)
 fit1 <- survfit(survi~test$Initial_tx,data=test)
+fit1
 ```
 
-  - 1.  변수명 os\_time을 시간으로, death를 event로 지정한다.
+    ## Call: survfit(formula = survi ~ test$Initial_tx, data = test)
+    ## 
+    ##                    n events median 0.95LCL 0.95UCL
+    ## test$Initial_tx=0 19      5   80.3    61.1      NA
+    ## test$Initial_tx=1 18      2     NA    61.7      NA
 
-  - 2.  survfit 함수를 사용하여
+1.  변수명 os\_time을 시간으로, death를 event로 지정한다.
+2.  survfit 함수를 사용하여
 
 \#\#\#.
 

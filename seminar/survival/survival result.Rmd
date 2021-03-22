@@ -9,7 +9,7 @@ output:
     
 ---
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(fig.align = "center", message=F, warning=F, fig.height = 14, cache=T)
+knitr::opts_chunk$set(fig.align = "center", message=F, warning=F, fig.height = 7, cache=T)
 ```
 
 ```{r}
@@ -44,10 +44,11 @@ test <- na.omit(test)
 ```{r}
 survi <- Surv(time = test$os_time, event = test$death)
 fit1 <- survfit(survi~test$Initial_tx,data=test)
+fit1
 ```
 
-+ 1. 변수명 os_time을 시간으로, death를 event로 지정한다.
-+ 2. survfit 함수를 사용하여 
+1. 변수명 os_time을 시간으로, death를 event로 지정한다.
+2. survfit 함수를 사용하여 
 
 ###. 
 
