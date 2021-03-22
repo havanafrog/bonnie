@@ -9,7 +9,7 @@ output:
     
 ---
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(fig.align = "center", message=F, warning=F, fig.height = 5, cache=T)
+knitr::opts_chunk$set(fig.align = "center", message=F, warning=F, fig.height = 4)
 ```
 
 ```{r}
