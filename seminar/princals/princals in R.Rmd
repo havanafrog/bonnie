@@ -1,0 +1,59 @@
+---
+title: "princals in R"
+subtitle: ""
+author: ""
+output: 
+  rmarkdown::github_document :
+    toc : true
+    toc_depth : 3
+---
+
+```{r}
+library(Gifi)
+
+```
+
+```{r}
+sleeping <- read.csv("sleeping.csv")
+
+rownames(sleeping)<- sleeping[,1]
+sleeping <- sleeping[,-1]
+
+```
+```{r}
+sleepingNUM <- makeNumeric(sleeping)
+```
+
+## 1. Pca 
+```{r}
+pca_sle<-prcomp(sleepingNUM,scale. = T,center = T)
+pca_slee<-princomp(sleepingNUM)
+
+```
+
+```{r}
+biplot(pca_sle)
+
+screeplot(pca_sle,type="l")
+
+```
+
+## 2. princals
+```{r}
+test <- princals(sleepingNUM)
+test1<-homals(sleepingNUM)
+test1$quantifications
+plot(test,"biplot")
+
+plot(test,"screeplot")
+```
+
+## 구현하지 못한것.
+```{r}
+test$quantifications$Material
+test1$quantifications$Material
+test$loadings
+```
+
+
+
